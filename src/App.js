@@ -24,7 +24,7 @@ function App() {
   const handleToggle = (id) => {
     setToDos([
       ...todos.map((todo) => 
-          todo.id === id ? {...todo, complete: !todo.complete} : {todo}
+          todo.id === id ? {...todo, complete: !todo.complete} : {...todo}
       )])
   }
 
