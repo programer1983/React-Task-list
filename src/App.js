@@ -17,12 +17,15 @@ function App() {
     }
   }
 
-  const removeTask = () => {
-    
+  const removeTask = (id) => {
+    setToDos([...todos.filter((todo) => todo.id !== id )])
   }
 
-  const handleToggle = () => {
-    
+  const handleToggle = (id) => {
+    setToDos([
+      ...todos.map((todo) => 
+          todo.id === id ? {...todo, complete: !todo.complete} : {todo}
+      )])
   }
 
 
@@ -34,8 +37,9 @@ function App() {
       <ToDoForm addTask={addTask} />
       {todos.map((todo) => {
         return (
-          <ToDo 
+        <ToDo
           key={todo.id} 
+          todo={todo}
           toggleTask={handleToggle} 
           removeTask={removeTask} 
         />
